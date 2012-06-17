@@ -1,5 +1,22 @@
 /*! jQuery Modals is just another lightbox plugin – by @drublic */
 
+/*
+ *
+ * jQuery Modals
+ * A jQuery plugin for lightboxes
+ *
+ * @author Hans Christian Reinl
+ * @version 0.1
+ * @example $('.modal').modals();
+ *
+ * Options:
+ * hasNav: true					// You need a navigation for your modals
+ * templates:
+ *   nav: '<div…</div>'			// Template for the navigation
+ *   close: '<a–</a>'			// Template for close-button
+ *
+ */
+
 /*global log */
 (function ($) {
 
@@ -8,7 +25,10 @@
 		// Set some defaults
 		var defaults = {
 			hasNav: true,
-			navTemplate: '<div class="nav"><a href="{{prev}}" data-target="{{prev_target}}" class="prev">&larr;</a><a href="{{next}}" data-target="{{next_target}}" class="next">&rarr;</a></div>'
+			templates: {
+				nav: '<div class="nav"><a href="{{prev}}" data-target="{{prev_target}}" class="prev">&larr;</a><a href="{{next}}" data-target="{{next_target}}" class="next">&rarr;</a></div>',
+				close: '<a href="#/" class="close">&times;</a>'
+			}
 		};
 
 		// Merge them with the options passed
@@ -22,10 +42,10 @@
 				var key;
 
 				for (key in data) {
-					settings.navTemplate = settings.navTemplate.replace('{{' + key + '}}', data[key]);
+					settings.templates.nav = settings.templates.nav.replace('{{' + key + '}}', data[key]);
 				}
 
-				return settings.navTemplate;
+				return settings.templates.nav;
 			};
 
 
