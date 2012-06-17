@@ -7,6 +7,7 @@
 
 		// Set some defaults
 		var defaults = {
+			hasNav: true,
 			navTemplate: '<div class="nav"><a href="{{prev}}" data-target="{{prev_target}}" class="prev">&larr;</a><a href="{{next}}" data-target="{{next_target}}" class="next">&rarr;</a></div>'
 		};
 
@@ -21,7 +22,7 @@
 				var key;
 
 				for (key in data) {
-					settings.navTemplate = tmpl.replace('{{' + key + '}}', data[key]);
+					settings.navTemplate = settings.navTemplate.replace('{{' + key + '}}', data[key]);
 				}
 
 				return settings.navTemplate;
@@ -49,23 +50,23 @@
 						}
 
 						// Render navigation
-						$nav = this.render(data);
+						$nav = render(data);
 
 						$(this).append($nav);
 					});
 
 				},
 
-				keyevents: function () {
+				events: function () {
 
 					// Keyboard navigation
 					$(document).on('keyup', function(e) {
 						if ($('.modal.in').size() > 0) {
-							if (e.which == 37 && $('.modal.in .prev[href^="#"]').size() > 0) {
+							if (e.which === 37 && $('.modal.in .prev[href^="#"]').size() > 0) {
 								$('.modal.in .prev').trigger('click');
 							}
 
-							if (e.which == 39 && $('.modal.in .next[href^="#"]').size() > 0) {
+							if (e.which === 39 && $('.modal.in .next[href^="#"]').size() > 0) {
 								$('.modal.in .next').trigger('click');
 							}
 						}
@@ -148,8 +149,37 @@
 
 			};
 
+			// Self evoking init-function
 			var init = function () {
 				events();
+
+				// Create a navigation
+				var navigation = (settings.hasNav) ? new Navigation() : false;
+
+				// Move all modals at end of page
+				var $container = $('<div>', {
+					id : 'modal-container'
+				});
+
+				$('.modal').each(function () {
+
+					// Append the nav
+					if (navigation) {
+						navigation.createNav( $(this) );
+					}
+
+					// Append to container
+					$(this).appendTo( $container );
+				});
+
+				// Append container to body
+				$container.appendTo('body');
+
+				// Init events for navigation
+				if (navigation) {
+					navigation.events();
+				}
+
 			} ();
 
 			return {
