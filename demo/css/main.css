@@ -1,0 +1,62 @@
+.backdrop {
+  -moz-transition: opacity 0.3s ease-out;
+  -webkit-transition: opacity 0.3s ease-out;
+  -ms-transition: opacity 0.3s ease-out;
+  -o-transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+  background: #000;
+  opacity: 0; }
+  .backdrop.in {
+    opacity: .7; }
+
+.modal {
+  -moz-transition: all 0.2s ease-out 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out 0.2s ease-out;
+  -o-transition: all 0.2s ease-out 0.2s ease-out;
+  transition: all 0.2s ease-out 0.2s ease-out;
+  position: fixed;
+  top: -2999px;
+  left: 50%;
+  z-index: 999;
+  max-height: 600px;
+  overflow: auto;
+  width: 400px;
+  margin: 0 0 0 -300px;
+  padding: 10px 100px;
+  background: #fff;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  opacity: 0; }
+  .modal.in {
+    top: 100px;
+    opacity: 1; }
+  .modal .nav a {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    margin-top: -11px;
+    border-bottom: 0;
+    font-size: 1.8em; }
+  .modal .nav .next {
+    left: auto;
+    right: 20px; }
+  .modal .nav a[href^="#"] {
+    display: block; }
+  .modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #222;
+    font-size: 1.5em; }
+    .modal .close:visited {
+      color: color; }
