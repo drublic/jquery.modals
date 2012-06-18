@@ -17,8 +17,10 @@
  *
  */
 
-/*global log */
-(function ($) {
+/*global jQuery, log */
+(function ($, window, document) {
+
+	"use strict";
 
 	$.fn.modals = function (options) {
 
@@ -132,7 +134,7 @@
 						}
 
 						// And show it
-						setTimeout( function () {
+						window.setTimeout( function () {
 							$('.' + attributes.identifier).addClass('in');
 						}, 0);
 					})
@@ -214,11 +216,11 @@
 					if ($('.modal.in').size() > 0) {
 						$('.modal.in').removeClass('in');
 
-						setTimeout( function () {
+						window.setTimeout( function () {
 							$(el).addClass('in');
 						}, 500);
 					} else {
-						setTimeout( function () {
+						window.setTimeout( function () {
 							$(el).addClass('in');
 						}, 0);
 					}
@@ -241,4 +243,4 @@
 	};
 
 
-}(jQuery));
+}(jQuery, window, document));
