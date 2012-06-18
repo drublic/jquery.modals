@@ -117,38 +117,39 @@
 						if (e.keyCode === 27) {
 							modal.hide();
 						}
+					})
+
+					// Show it
+					.on('backdrop:show', function () {
+
+						// Check if it already exists
+						if ($('.' + attributes.identifier).size() < 1) {
+							$('<div>', {
+								'class': attributes.identifier
+							}).appendTo('body');
+
+							events();
+						}
+
+						// And show it
+						setTimeout( function () {
+							$('.' + attributes.identifier).addClass('in');
+						}, 0);
+					})
+
+					// Hide the backdrop
+					.on('backdrop:hide', function () {
+						$('.' + attributes.identifier).fadeOut( function() {
+							$(this).remove();
+						});
 					});
 			};
 
-			return {
-
-				// Show it
-				show: function () {
-
-					// Check if it already exists
-					if ($('.' + attributes.identifier).size() < 1) {
-						$('<div>', {
-							'class': attributes.identifier
-						}).appendTo('body');
-
-						events();
-					}
-
-					// And show it
-					$('.' + attributes.identifier).addClass('in');
-				},
-
-				// Hide the backdrop
-				hide: function () {
-					$('.' + attributes.identifier).fadeOut( function() {
-						$(this).remove();
-					});
-				}
-			};
-		};
-
-		// Create instance of Backdrop
-		var backdrop = new Backdrop();
+			// Constructor
+			var init = function () {
+				events();
+			}();
+		}();
 
 		// Stuff for modals
 		var Modal = function () {
@@ -217,12 +218,12 @@
 						$(el).addClass('in');
 					}
 
-					backdrop.show();
+					$(document).trigger('backdrop:show');
 				},
 
 				// Hide it
 				hide: function () {
-					backdrop.hide();
+					$(document).trigger('backdrop:hide');
 					$('.modal.in').removeClass('in');
 				}
 			};
