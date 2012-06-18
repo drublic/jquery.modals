@@ -16,13 +16,13 @@
     opacity: .7; }
 
 .modal {
-  -moz-transition: all 0.2s ease-out 0.2s ease-out;
-  -webkit-transition: all 0.2s ease-out 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out 0.2s ease-out;
-  -o-transition: all 0.2s ease-out 0.2s ease-out;
-  transition: all 0.2s ease-out 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   position: fixed;
-  top: -2999px;
+  top: -1999px;
   left: 50%;
   z-index: 999;
   max-height: 600px;

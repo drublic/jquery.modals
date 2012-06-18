@@ -29,10 +29,10 @@
 
 // Base modal
 .modal {
-	@include x_transition(all .2s ease-out);
+	@include x_transition(all, .2s);
 
 	position: fixed;
-	top: -2999px;
+	top: -1999px;
 	left: 50%;
 	z-index: 999;
 	max-height: 600px;
