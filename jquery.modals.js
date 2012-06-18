@@ -170,9 +170,8 @@
 
 			};
 
-			// Self evoking init-function
+			// Self evoking contructor-function
 			var init = function () {
-				events();
 
 				// Create a navigation
 				var navigation = (settings.hasNav) ? new Navigation() : false;
@@ -196,6 +195,9 @@
 				// Append container to body
 				$container.appendTo('body');
 
+				// Create eventes
+				events();
+
 				// Init events for navigation
 				if (navigation) {
 					navigation.events();
@@ -207,6 +209,7 @@
 
 				// Show it
 				show: function (el) {
+					log("Show Modal");
 
 					if ($('.modal.in').size() > 0) {
 						$('.modal.in').removeClass('in');
@@ -215,7 +218,9 @@
 							$(el).addClass('in');
 						}, 500);
 					} else {
-						$(el).addClass('in');
+						setTimeout( function () {
+							$(el).addClass('in');
+						}, 0);
 					}
 
 					$(document).trigger('backdrop:show');
