@@ -162,13 +162,13 @@
 			var events = function () {
 
 				// Call modal
-				$('a[data-target]').on('click', function (e) {
+				$(document).on('click', 'a[data-target]', function (e) {
 					e.stopImmediatePropagation();
 					modal.show( $(this).data('target') );
-				});
+				})
 
 				// When clicking close
-				$(document).on('click', '.modal .close', function (e) {
+				.on('click', '.modal .close', function (e) {
 					e.stopImmediatePropagation();
 					modal.hide();
 				});
