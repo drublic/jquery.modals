@@ -21,13 +21,15 @@
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   position: fixed;
   top: -1999px;
   left: 50%;
   z-index: 999;
   max-height: 600px;
   overflow: auto;
-  width: 400px;
+  width: 600px;
   margin: 0 0 0 -300px;
   padding: 10px 100px;
   background: #fff;

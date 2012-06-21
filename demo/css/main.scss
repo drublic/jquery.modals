@@ -1,5 +1,5 @@
 
-@mixin x-transition($what: all, $time: .2s, $effect: ease-out) {
+@mixin x-transition ($what: all, $time: .2s, $effect: ease-out) {
 	   -moz-transition: $what $time $effect;
 	-webkit-transition: $what $time $effect;
 		-ms-transition: $what $time $effect;
@@ -7,10 +7,15 @@
 			transition: $what $time $effect;
 }
 
+@mixin x-box-sizing ($how: border-box) {
+	-moz-box-sizing: $how;
+		 box-sizing: $how;
+}
+
 
 // Background
 .backdrop {
-	@include x_transition(opacity, .3s);
+	@include x-transition(opacity, .3s);
 
 	position: fixed;
 	top: 0;
@@ -29,7 +34,8 @@
 
 // Base modal
 .modal {
-	@include x_transition(all, .2s);
+	@include x-transition(all, .2s);
+	@include x-box-sizing;
 
 	position: fixed;
 	top: -1999px;
@@ -37,7 +43,7 @@
 	z-index: 999;
 	max-height: 600px;
 	overflow: auto;
-	width: 400px;
+	width: 600px;
 	margin: 0 0 0 -300px;
 	padding: 10px 100px;
 	background: #fff;
