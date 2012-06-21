@@ -4,6 +4,9 @@
  *
  * jQuery Modals
  * A jQuery plugin for lightboxes
+ * Inspired by Twitter Bootstrap's Modals
+ *
+ * https://github.com/drublic/jquery.modals
  *
  * @author Hans Christian Reinl
  * @version 0.1
@@ -17,7 +20,7 @@
  *
  */
 
-/*global jQuery, log */
+/*global jQuery */
 (function ($, window, document) {
 
 	"use strict";
@@ -211,8 +214,6 @@
 
 				// Show it
 				show: function (el) {
-					log("Show Modal");
-
 					if ($('.modal.in').size() > 0) {
 						$('.modal.in').removeClass('in');
 
